@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Słodkie Wiadomości dla Oliwi</title>
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    text-align: center;
+  }
+  #message {
+    font-size: 2rem;
+    padding: 20px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    animation: fade 1s ease-in-out;
+  }
+  @keyframes fade {
+    0% {opacity: 0; transform: translateY(-10px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+  .heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 4s linear infinite;
+  }
+  @keyframes float {
+    0% {transform: translateY(100vh) rotate(0deg);}
+    100% {transform: translateY(-10vh) rotate(360deg);}
+  }
+</style>
+</head>
+<body>
+<div id="message">Kliknij start, aby włączyć powiadomienia 💖</div>
+<button id="start" style="position:absolute; bottom:20px; padding:10px 20px; font-size:1rem; cursor:pointer;">Start 💌</button>
+<script src="app.js"></script>
+<script>
+  // Serduszka w tle
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+    heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+    heart.textContent = '❤️';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+  }
+  setInterval(createHeart, 500);
+</script>
+</body>
+</html>
